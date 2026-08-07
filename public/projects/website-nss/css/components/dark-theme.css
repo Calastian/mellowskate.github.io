@@ -1,0 +1,10 @@
+/* ========== Dark Theme Styles ========== */
+
+/* Global dark theme styles */
+html.dark-theme body {
+  background-color: black;
+  background-image: linear-gradient(to bottom, #1f1e1e, black);
+  color: #ffffff;
+}
+
+/* Note: Navbar dark theme styles are handled in navbar.css for better organization */

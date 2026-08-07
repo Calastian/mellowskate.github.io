@@ -1,0 +1,22 @@
+{
+    "name": "Nano Software Services LLC",
+    "short_name": "Nano Software",
+    "description": "Professional technology solutions including custom PC builds, streaming setups, and AI environmental monitoring systems.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#000000",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/images/nano_whiteback_black_box.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/nano_whiteback_black_box.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

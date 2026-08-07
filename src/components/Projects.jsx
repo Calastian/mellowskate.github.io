@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import Badge from './ui/Badge.jsx'
 import Section from './ui/Section.jsx'
 import RevealList from './ui/RevealList.jsx'
-import { GithubLogo, ArrowSquareOut } from '@phosphor-icons/react'
+import Modal from './Modal.jsx'
+import clientProjects from '../data/clientProjects.js'
+import { GithubLogo, Play } from '@phosphor-icons/react'
 
-const projects = [
+const personalProjects = [
   {
     title: 'ASL to Text Translator',
     subtitle: 'Transformer model for real-time sign language translation',
@@ -34,6 +37,8 @@ const projects = [
 ]
 
 export default function Projects() {
+  const [activeClient, setActiveClient] = useState(null)
+
   return (
     <>
       <Section className="min-h-dvh flex items-center pt-24 pb-16">
@@ -54,7 +59,7 @@ export default function Projects() {
       <Section className="border-t border-border">
         <div className="mx-auto max-w-7xl px-6">
           <RevealList className="space-y-12">
-            {projects.map((project) => (
+            {personalProjects.map((project) => (
               <div
                 key={project.title}
                 className="rounded-xl border border-border bg-surface-alt overflow-hidden"
@@ -91,7 +96,7 @@ export default function Projects() {
                       rel="noreferrer"
                       className="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:text-accent/80 transition-colors duration-200"
                     >
-                      <ArrowSquareOut size={16} weight="bold" />
+                      <Play size={16} weight="bold" />
                       View project
                     </a>
                   )}
@@ -113,6 +118,57 @@ export default function Projects() {
           </div>
         </div>
       </Section>
+
+      <Section className="border-t border-border">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="max-w-3xl mb-10">
+            <p className="font-mono text-sm text-accent mb-2">Client work</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-text-primary">
+              Websites &amp; Projects for Clients
+            </h2>
+            <p className="mt-3 text-text-secondary leading-relaxed">
+              Interactive previews of past client sites. Click a card to explore the full
+              site inside a popup.
+            </p>
+          </div>
+
+          <RevealList className="grid gap-6 sm:grid-cols-2">
+            {clientProjects.map((project) => (
+              <button
+                key={project.title}
+                onClick={() => setActiveClient(project)}
+                className="group text-left rounded-xl border border-border bg-surface-alt p-6 transition-all duration-300 ease-out hover:border-accent/30 hover:bg-surface-hover cursor-pointer w-full"
+              >
+                <h3 className="text-lg font-semibold text-text-primary group-hover:text-accent transition-colors duration-200">
+                  {project.title}
+                </h3>
+                <p className="text-sm text-text-muted mt-1 mb-3">
+                  {project.subtitle}
+                </p>
+                <p className="text-sm text-text-secondary leading-relaxed mb-4 line-clamp-3">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {project.tags.map((tag) => (
+                    <Badge key={tag}>{tag}</Badge>
+                  ))}
+                </div>
+                <span className="inline-flex items-center gap-1.5 text-xs font-medium text-accent group-hover:text-accent/80 transition-colors duration-200">
+                  <Play size={14} weight="fill" />
+                  Launch preview
+                </span>
+              </button>
+            ))}
+          </RevealList>
+        </div>
+      </Section>
+
+      <Modal
+        isOpen={activeClient !== null}
+        onClose={() => setActiveClient(null)}
+        src={activeClient?.url || ''}
+        title={activeClient?.title || ''}
+      />
 
       <footer className="border-t border-border py-8 mt-16">
         <div className="mx-auto max-w-7xl px-6">

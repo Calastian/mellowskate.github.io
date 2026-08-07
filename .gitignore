@@ -8,3 +8,8 @@ dist
 .opencode/
 .agents/
 skills-lock.json
+
+# Client project sources (built output lives in public/projects/)
+/KyleAndKyleLaw/
+/Website-nss/
+/Resume_ChristianNovgrod.pdf

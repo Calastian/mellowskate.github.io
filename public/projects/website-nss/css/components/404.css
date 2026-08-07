@@ -1,0 +1,49 @@
+/* ========== 404 Error Page Styles ========== */
+
+/* Page background */
+body {
+  background: #f8f9fa;
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+/* Main 404 container */
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+/* Large 404 title */
+.not-found-title {
+  font-size: 6rem;
+  font-weight: bold;
+  color: #343a40;
+  margin-bottom: 1rem;
+}
+
+/* Error message */
+.not-found-message {
+  font-size: 1.5rem;
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+/* Return home link */
+.not-found-link {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: #007bff;
+  color: #fff;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.not-found-link:hover {
+  background: #0056b3;
+}
