@@ -1,7 +1,10 @@
+import { Fragment } from 'react'
+import { motion } from 'motion/react'
 import Button from './ui/Button.jsx'
 import Badge from './ui/Badge.jsx'
 import Section from './ui/Section.jsx'
 import RevealList from './ui/RevealList.jsx'
+import useTypewriter from '../hooks/useTypewriter.js'
 import { GithubLogo, Envelope, LinkedinLogo, GraduationCap, Certificate } from '@phosphor-icons/react'
 
 const skillCategories = [
@@ -67,6 +70,11 @@ const certifications = [
 ]
 
 export default function Home() {
+  const { completedWords, currentWord, showCursor } = useTypewriter({
+    words: ['Christian', 'Novgrod'],
+    speed: 120,
+  })
+
   return (
     <>
       <Section className="min-h-dvh flex items-center pt-24 pb-16">
@@ -74,9 +82,26 @@ export default function Home() {
           <div className="max-w-3xl">
             <p className="font-mono text-sm text-accent mb-4">Hello, I'm</p>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-none text-text-primary">
-              Christian
-              <br />
-              Novgrod
+              {completedWords.map((word, i) => (
+                <Fragment key={i}>
+                  {word}
+                  <br />
+                </Fragment>
+              ))}
+              {currentWord}
+              {showCursor && (
+                <motion.span
+                  animate={{ opacity: [1, 1, 0, 0] }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    times: [0, 0.5, 0.5, 1],
+                  }}
+                  className="text-accent font-light"
+                >
+                  |
+                </motion.span>
+              )}
             </h1>
             <p className="mt-6 text-lg md:text-xl text-text-secondary leading-relaxed max-w-[60ch]">
               Computer science graduate and software developer building tools at the
