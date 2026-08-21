@@ -4,7 +4,8 @@ import Section from './ui/Section.jsx'
 import RevealList from './ui/RevealList.jsx'
 import Modal from './Modal.jsx'
 import clientProjects from '../data/clientProjects.js'
-import { GithubLogo, Play } from '@phosphor-icons/react'
+import clientTestimonials from '../data/clientTestimonials.js'
+import { GithubLogo, Play, Quotes } from '@phosphor-icons/react'
 
 const personalProjects = [
   {
@@ -158,6 +159,42 @@ export default function Projects() {
                   Launch preview
                 </span>
               </button>
+            ))}
+          </RevealList>
+        </div>
+      </Section>
+
+      <Section className="border-t border-border">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="max-w-3xl mb-10">
+            <p className="font-mono text-sm text-accent mb-2">Client work</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-text-primary">
+              Testimonials &amp; Feedback
+            </h2>
+            <p className="mt-3 text-text-secondary leading-relaxed">
+              What clients have said about working with me.
+            </p>
+          </div>
+
+          <RevealList className="grid gap-6 sm:grid-cols-2">
+            {clientTestimonials.map((testimonial) => (
+              <figure
+                key={testimonial.name}
+                className="flex flex-col rounded-xl border border-border bg-surface-alt p-6"
+              >
+                <Quotes size={20} weight="fill" className="text-accent mb-4" />
+                <blockquote className="flex-1 mb-5 text-sm text-text-secondary leading-relaxed">
+                  {testimonial.quote}
+                </blockquote>
+                <figcaption>
+                  <p className="text-sm font-semibold text-text-primary">
+                    {testimonial.name}
+                  </p>
+                  <p className="text-xs text-text-muted mt-0.5">
+                    {testimonial.role}
+                  </p>
+                </figcaption>
+              </figure>
             ))}
           </RevealList>
         </div>

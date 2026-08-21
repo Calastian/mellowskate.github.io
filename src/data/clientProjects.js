@@ -15,6 +15,14 @@ const clientProjects = [
     tags: ['Node.js', 'Express', 'Handlebars', 'PostgreSQL', 'CSS'],
     url: '/projects/website-nss/index.html',
   },
+  {
+    title: 'Bounce Royale',
+    subtitle: 'Bounce House Rental Service Website',
+    description:
+      'A fully built website for a bounce house rental service. Includes a dynamic booking form, a Custom managing service, and an interactive gallery, and responsive design.',
+    tags: ['React', 'styled-components', 'CSS'],
+    url: 'https://bounceroyale.com/',
+  },
 ]
 
 export default clientProjects
